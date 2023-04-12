@@ -4,10 +4,12 @@
 #include <vector>
 #include "shader.h"
 
+constexpr float F_PI = 3.1415926f;
+
 const std::vector vertices {
-     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,
-    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,
-     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f,
+     0.5f, -0.5f, 0.0f,  1.0f, 0.3f, 0.3f,
+    -0.5f, -0.5f, 0.0f,  0.3f, 1.0f, 0.3f,
+     0.0f,  0.5f, 0.0f,  0.3f, 0.3f, 1.0f,
 };
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
@@ -18,6 +20,14 @@ void processInput(GLFWwindow* window) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
         glfwSetWindowShouldClose(window, true);
     }
+}
+
+float genBySeed(float s, float factor = 1.f) {
+    s *= factor;
+    float int_val;
+    float frac = std::modf(s, &int_val);
+    return frac;
+    return std::abs(frac + (long long) int_val % 2 - 1.f);
 }
 
 int main() {
@@ -72,6 +82,8 @@ int main() {
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
+        shader->setFloat("seed", genBySeed(glfwGetTime(), 0.2f) * 2 * F_PI);
+        
         shader->use();
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
