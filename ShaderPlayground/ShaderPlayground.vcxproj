@@ -129,10 +129,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="shader.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="shader.h" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="VertexShader.glsl" />

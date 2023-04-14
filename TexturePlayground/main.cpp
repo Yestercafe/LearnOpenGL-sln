@@ -5,9 +5,9 @@
 #include <vector>
 
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "../headers/stb_image.h"
 
-#include "shader.h"
+#include "../headers/shader.h"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);

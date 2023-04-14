@@ -2,7 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <vector>
-#include "shader.h"
+#include "../headers/shader.h"
 
 constexpr float F_PI = 3.1415926f;
 
